@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/fondo_degrade"
+    android:padding="24dp"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTituloNuevo"
+        android:text="Nuevo Contacto"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="45sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_marginBottom="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!-- Nombre -->
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre"
+        android:background="@drawable/estilo_edittext_blanco"
+        android:textColor="#FFFFFF"
+        android:fontFamily="sans-serif-medium"
+        android:textColorHint="#CCCCCC"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Teléfono -->
+    <EditText
+        android:id="@+id/etTelefono"
+        android:fontFamily="sans-serif-medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Teléfono"
+        android:background="@drawable/estilo_edittext_blanco"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CCCCCC"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Correo -->
+    <EditText
+        android:id="@+id/etCorreo"
+        android:fontFamily="sans-serif-medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Correo electrónico"
+        android:background="@drawable/estilo_edittext_blanco"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#CCCCCC"
+        android:padding="12dp"
+        android:layout_marginBottom="32dp" />
+
+    <!-- Botón Guardar -->
+    <Button
+        android:id="@+id/btnGuardar"
+        android:fontFamily="sans-serif-medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:textColor="#080808"
+        app:backgroundTint="#FFFFFF"
+        android:elevation="6dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp" />
+
+</LinearLayout>
