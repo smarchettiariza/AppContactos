@@ -18,6 +18,18 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        boolean sesionIniciada = getSharedPreferences("MisPreferencias", MODE_PRIVATE)
+                .getBoolean("isLoggedIn", false);
+
+        if (sesionIniciada) {
+            startActivity(new Intent(LoginActivity.this, ContactosActivity.class));
+            finish();
+            return;
+        }
+
+
+        setContentView(R.layout.activity_login);
         etUsuario = findViewById(R.id.etUsuario);
         etPassword = findViewById(R.id.etPassword);
         btnIngresar = findViewById(R.id.btnIngresar);
@@ -28,7 +40,12 @@ public class LoginActivity extends AppCompatActivity {
 
             // Validación simple
             if(usuario.equals("admin") && password.equals("1234")){
+                getSharedPreferences("MisPreferencias", MODE_PRIVATE)
+                        .edit()
+                        .putBoolean("isLoggedIn", true)
+                        .apply();
                 Intent intent = new Intent(LoginActivity.this, ContactosActivity.class);
+
                 startActivity(intent);
                 finish();
             } else {

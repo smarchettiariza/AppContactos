@@ -3,6 +3,7 @@ package com.example.marchetti399;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,10 +16,14 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
 
     private List<Contacto> listaOriginal;
     private List<Contacto> listaFiltrada;
+    private OnContactoLongClick listener;
+    private OnContactoClick clickListener;
 
-    public ContactosAdapter(List<Contacto> listaContactos) {
+    public ContactosAdapter(List<Contacto> listaContactos, OnContactoLongClick longClickListener, OnContactoClick clickListener) {
         this.listaOriginal = new ArrayList<>(listaContactos);
         this.listaFiltrada = new ArrayList<>(listaContactos);
+        this.listener = longClickListener;
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -31,9 +36,7 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
     @Override
     public void onBindViewHolder(@NonNull ContactoViewHolder holder, int position) {
         Contacto contacto = listaFiltrada.get(position);
-        holder.tvNombre.setText(contacto.getNombre());
-        holder.tvTelefono.setText("📞 " + contacto.getTelefono());
-        holder.tvCorreo.setText("📧 " + contacto.getCorreo());
+        holder.bind(contacto, listener, clickListener);
     }
 
     @Override
@@ -41,14 +44,26 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
         return listaFiltrada.size();
     }
 
-    public static class ContactoViewHolder extends RecyclerView.ViewHolder {
+    public class ContactoViewHolder extends RecyclerView.ViewHolder {
         TextView tvNombre, tvTelefono, tvCorreo;
+        Button btnEditar, btnEliminar;
 
         public ContactoViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNombre = itemView.findViewById(R.id.tvNombre);
             tvTelefono = itemView.findViewById(R.id.tvTelefono);
             tvCorreo = itemView.findViewById(R.id.tvCorreo);
+            btnEditar = itemView.findViewById(R.id.btnEditar);
+            btnEliminar = itemView.findViewById(R.id.btnEliminar);
+        }
+
+        public void bind(Contacto contacto, OnContactoLongClick longClickListener, OnContactoClick clickListener) {
+            tvNombre.setText(contacto.getNombre());
+            tvTelefono.setText("📞 " + contacto.getTelefono());
+            tvCorreo.setText("📧 " + contacto.getCorreo());
+
+            btnEliminar.setOnClickListener(v -> longClickListener.onLongClick(contacto));
+            btnEditar.setOnClickListener(v -> clickListener.onClick(contacto));
         }
     }
 
@@ -69,6 +84,14 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
     public void agregarContacto(Contacto nuevo) {
         listaOriginal.add(nuevo);
         listaFiltrada.add(nuevo);
+        notifyDataSetChanged();
+    }
+
+    public void actualizarLista(List<Contacto> nuevos) {
+        listaOriginal.clear();
+        listaOriginal.addAll(nuevos);
+        listaFiltrada.clear();
+        listaFiltrada.addAll(nuevos);
         notifyDataSetChanged();
     }
 }

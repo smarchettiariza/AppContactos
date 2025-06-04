@@ -1,31 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:background="#667188"
+    android:padding="12dp"
     android:layout_margin="8dp"
-    android:background="@drawable/bg_contacto_item"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:elevation="2dp"
+    android:layout_gravity="center"
+    android:backgroundTintMode="src_in"
+    android:radius="12dp"
+    android:layoutDirection="ltr"
+    android:backgroundTint="@null"
+    android:shape="rectangle">
 
     <TextView
         android:id="@+id/tvNombre"
         android:text="Nombre"
         android:textStyle="bold"
-        android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:layout_width="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvTelefono"
-        android:text="Teléfono"
+        android:text="📞 Teléfono"
         android:textColor="#DDDDDD"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tvCorreo"
-        android:text="Correo"
-        android:textColor="#CCCCCC"
-        android:layout_width="wrap_content"
+        android:text="📧 Correo"
+        android:textColor="#DDDDDD"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnEditar"
+            android:text="Editar"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#4CAF50"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/btnEliminar"
+            android:text="Eliminar"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#F44336"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+
 </LinearLayout>

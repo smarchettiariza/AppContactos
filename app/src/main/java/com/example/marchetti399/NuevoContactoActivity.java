@@ -13,6 +13,9 @@ public class NuevoContactoActivity extends AppCompatActivity {
     EditText etNombre, etTelefono, etCorreo;
     Button btnGuardar;
 
+    boolean modoEdicion = false;
+    String nombreOriginal = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,21 @@ public class NuevoContactoActivity extends AppCompatActivity {
         etCorreo = findViewById(R.id.etCorreo);
         btnGuardar = findViewById(R.id.btnGuardar);
 
+        Intent intent = getIntent();
+        if (intent.hasExtra("modo_edicion")) {
+            modoEdicion = true;
+
+            nombreOriginal = intent.getStringExtra("nombre_original");
+            String nombre = intent.getStringExtra("nombre");
+            String telefono = intent.getStringExtra("telefono");
+            String correo = intent.getStringExtra("correo");
+
+            etNombre.setText(nombre);
+            etTelefono.setText(telefono);
+            etCorreo.setText(correo);
+            btnGuardar.setText("Guardar cambios");
+        }
+
         btnGuardar.setOnClickListener(v -> {
             String nombre = etNombre.getText().toString().trim();
             String telefono = etTelefono.getText().toString().trim();
@@ -31,11 +49,17 @@ public class NuevoContactoActivity extends AppCompatActivity {
             if (nombre.isEmpty() || telefono.isEmpty() || correo.isEmpty()) {
                 Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
             } else {
-                Intent intent = new Intent();
-                intent.putExtra("nombre", nombre);
-                intent.putExtra("telefono", telefono);
-                intent.putExtra("correo", correo);
-                setResult(RESULT_OK, intent);
+                Intent resultado = new Intent();
+                resultado.putExtra("nombre", nombre);
+                resultado.putExtra("telefono", telefono);
+                resultado.putExtra("correo", correo);
+
+                if (modoEdicion) {
+                    resultado.putExtra("modo_edicion", true);
+                    resultado.putExtra("nombre_original", nombreOriginal);
+                }
+
+                setResult(RESULT_OK, resultado);
                 finish();
             }
         });
