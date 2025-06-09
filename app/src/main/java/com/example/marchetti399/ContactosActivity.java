@@ -51,13 +51,14 @@ public class ContactosActivity extends AppCompatActivity {
         dbHelper = new ContactoDbHelper(this);
         contactos = dbHelper.obtenerContactos();
 
-// Contactos por defecto (solo si está vacía la tabla)
+        // Contactos por defecto
         if (contactos.isEmpty()) {
-            dbHelper.insertarContacto(new Contacto("Juan Pérez", "123456789", "juan@email.com"));
-            dbHelper.insertarContacto(new Contacto("María López", "987654321", "maria@email.com"));
-            contactos = dbHelper.obtenerContactos(); // recargar lista
+            dbHelper.insertarContacto(new Contacto("Juan Pérez", "123456789", "juan@email.com", "Calle Falsa 123", "Masculino"));
+            dbHelper.insertarContacto(new Contacto("María López", "987654321", "maria@email.com", "Av. Siempre Viva 456", "Femenino"));
+            contactos = dbHelper.obtenerContactos(); // recargar
         }
-        // Adaptador con listener de eliminación y edición (en este ejemplo solo eliminación)
+
+        // Adaptador con listeners
         adapter = new ContactosAdapter(contactos,
                 contacto -> {
                     new androidx.appcompat.app.AlertDialog.Builder(this)
@@ -73,13 +74,14 @@ public class ContactosActivity extends AppCompatActivity {
                             .show();
                 },
                 contacto -> {
-                    // Listener de edición (si estás usando también edición)
                     Intent intent = new Intent(this, NuevoContactoActivity.class);
                     intent.putExtra("modo_edicion", true);
                     intent.putExtra("nombre_original", contacto.getNombre());
                     intent.putExtra("nombre", contacto.getNombre());
                     intent.putExtra("telefono", contacto.getTelefono());
                     intent.putExtra("correo", contacto.getCorreo());
+                    intent.putExtra("domicilio", contacto.getDomicilio());
+                    intent.putExtra("genero", contacto.getGenero());
                     launcherNuevoContacto.launch(intent);
                 }
         );
@@ -96,7 +98,7 @@ public class ContactosActivity extends AppCompatActivity {
             @Override public void afterTextChanged(Editable s) {}
         });
 
-        // Agregar contacto
+        // Lanzador para nuevo o editado
         launcherNuevoContacto = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -104,15 +106,17 @@ public class ContactosActivity extends AppCompatActivity {
                         String nombre = result.getData().getStringExtra("nombre");
                         String telefono = result.getData().getStringExtra("telefono");
                         String correo = result.getData().getStringExtra("correo");
+                        String domicilio = result.getData().getStringExtra("domicilio");
+                        String genero = result.getData().getStringExtra("genero");
 
                         if (nombre != null && !nombre.isEmpty()) {
                             if (result.getData().hasExtra("modo_edicion")) {
                                 String nombreOriginal = result.getData().getStringExtra("nombre_original");
-                                Contacto actualizado = new Contacto(nombre, telefono, correo);
+                                Contacto actualizado = new Contacto(nombre, telefono, correo, domicilio, genero);
                                 dbHelper.actualizarContacto(nombreOriginal, actualizado);
                                 Toast.makeText(this, "Contacto actualizado", Toast.LENGTH_SHORT).show();
                             } else {
-                                Contacto nuevo = new Contacto(nombre, telefono, correo);
+                                Contacto nuevo = new Contacto(nombre, telefono, correo, domicilio, genero);
                                 dbHelper.insertarContacto(nuevo);
                                 Toast.makeText(this, "Contacto agregado", Toast.LENGTH_SHORT).show();
                             }

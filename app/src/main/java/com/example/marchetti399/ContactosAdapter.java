@@ -45,7 +45,7 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
     }
 
     public class ContactoViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNombre, tvTelefono, tvCorreo;
+        TextView tvNombre, tvTelefono, tvCorreo, tvDomicilio, tvGenero;
         Button btnEditar, btnEliminar;
 
         public ContactoViewHolder(@NonNull View itemView) {
@@ -53,6 +53,8 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
             tvNombre = itemView.findViewById(R.id.tvNombre);
             tvTelefono = itemView.findViewById(R.id.tvTelefono);
             tvCorreo = itemView.findViewById(R.id.tvCorreo);
+            tvDomicilio = itemView.findViewById(R.id.tvDomicilio);
+            tvGenero = itemView.findViewById(R.id.tvGenero);
             btnEditar = itemView.findViewById(R.id.btnEditar);
             btnEliminar = itemView.findViewById(R.id.btnEliminar);
         }
@@ -61,6 +63,8 @@ public class ContactosAdapter extends RecyclerView.Adapter<ContactosAdapter.Cont
             tvNombre.setText(contacto.getNombre());
             tvTelefono.setText("📞 " + contacto.getTelefono());
             tvCorreo.setText("📧 " + contacto.getCorreo());
+            tvDomicilio.setText("🏠 " + contacto.getDomicilio());
+            tvGenero.setText("👤 " + contacto.getGenero());
 
             btnEliminar.setOnClickListener(v -> longClickListener.onLongClick(contacto));
             btnEditar.setOnClickListener(v -> clickListener.onClick(contacto));
