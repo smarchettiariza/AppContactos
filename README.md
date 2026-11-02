@@ -17,16 +17,16 @@ Agenda local con login, búsqueda en tiempo real y operaciones CRUD completas �
 
 ---
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
-- 🔐 **Login con validación** — acceso con credenciales de usuario
-- 💾 **Sesión persistente** — inicio automático si la sesión ya está activa
-- 🚪 **Cerrar sesión** — desde el menú de la app
-- 📋 **Listado de contactos** — lista dinámica con RecyclerView
-- 🔍 **Búsqueda en tiempo real** — filtrado mientras escribís
-- ✏️ **CRUD completo** — agregar, editar y eliminar contactos
-- 📥 **Contactos predeterminados** — se cargan al iniciar la app
-- ✅ **Validaciones** — campos vacíos y teléfono solo numérico
+-  **Login con validación** — acceso con credenciales de usuario
+-  **Sesión persistente** — inicio automático si la sesión ya está activa
+-  **Cerrar sesión** — desde el menú de la app
+-  **Listado de contactos** — lista dinámica con RecyclerView
+-  **Búsqueda en tiempo real** — filtrado mientras escribís
+-  **CRUD completo** — agregar, editar y eliminar contactos
+-  **Contactos predeterminados** — se cargan al iniciar la app
+-  **Validaciones** — campos vacíos y teléfono solo numérico
 
 ## 🧾 Datos por contacto
 
@@ -38,7 +38,7 @@ Agenda local con login, búsqueda en tiempo real y operaciones CRUD completas �
 | Domicilio | Texto |
 | Género | Selección |
 
-## 🛠️ Stack técnico
+##  Stack técnico
 
 | | |
 |---|---|
@@ -47,26 +47,6 @@ Agenda local con login, búsqueda en tiempo real y operaciones CRUD completas �
 | **Interfaz** | RecyclerView · Material Components · degradés y botones personalizados |
 | **Sesión** | SharedPreferences |
 | **IDE** | Android Studio · Gradle |
-
-## 📸 Capturas de pantalla
-
-### 🔑 Login
-
-<!-- Agregá acá la captura -->
-
-### 📋 Lista de contactos
-
-<!-- Agregá acá la captura -->
-
-### ➕ Nuevo contacto
-
-<!-- Agregá acá la captura -->
-
-### ✏️ Edición de contacto
-
-<!-- Agregá acá la captura -->
-
-## 📂 Estructura del proyecto
 
 ```
 com.example.marchetti399/
