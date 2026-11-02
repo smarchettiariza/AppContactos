@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📱 Gestor de Contactos Android
+# Gestor de Contactos Android
 
 **Aplicación móvil para la gestión de contactos personales**
 
@@ -28,7 +28,7 @@ Agenda local con login, búsqueda en tiempo real y operaciones CRUD completas �
 -  **Contactos predeterminados** — se cargan al iniciar la app
 -  **Validaciones** — campos vacíos y teléfono solo numérico
 
-## 🧾 Datos por contacto
+## Datos por contacto
 
 | Campo | Tipo |
 |---|---|
@@ -70,7 +70,7 @@ com.example.marchetti399/
     └── boton_transparente.xml
 ```
 
-## ⚙️ Funcionamiento técnico
+## Funcionamiento técnico
 
 ### Persistencia de sesión
 
@@ -129,7 +129,7 @@ usuario:    admin
 contraseña: 1234
 ```
 
-## 📌 Notas
+## Notas
 
 - Los datos se guardan **localmente** en el dispositivo (SQLite): no hay servidor ni datos compartidos entre instalaciones.
 - Las credenciales `admin` / `1234` son de prueba y están definidas en la app.
