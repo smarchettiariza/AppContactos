@@ -106,7 +106,7 @@ recyclerView.setAdapter(new ContactosAdapter(contactos, clickListener, longClick
 
 Los contactos se leen desde SQLite y se renderizan dinámicamente. El adaptador notifica los cambios al agregar, editar o eliminar.
 
-## 🚀 Instalación
+## Instalación
 
 ### Requisitos
 
