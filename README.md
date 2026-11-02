@@ -4,41 +4,32 @@
 
 **Aplicación móvil para la gestión de contactos personales**
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-![Android Studio](https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
-![Material Design](https://img.shields.io/badge/Material_Design-757575?style=for-the-badge&logo=material-design&logoColor=white)
+Agenda local con login, búsqueda en tiempo real y operaciones CRUD completas — todo en un solo lugar.
 
-*App Android desarrollada en Java con SQLite, gestión de sesión y diseño Material Design*
-
-![Estado](https://img.shields.io/badge/Estado-Finalizado%20✔-brightgreen?style=for-the-badge)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white)
+![Android](https://img.shields.io/badge/Android-7.0+-3DDC84?style=flat&logo=android&logoColor=white)
+![Android Studio](https://img.shields.io/badge/Android_Studio-3DDC84?style=flat&logo=androidstudio&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-07405E?style=flat&logo=sqlite&logoColor=white)
+![Material Design](https://img.shields.io/badge/Material_Design-757575?style=flat&logo=materialdesign&logoColor=white)
+![Estado](https://img.shields.io/badge/Estado-Finalizado-brightgreen?style=flat)
 
 </div>
 
 ---
 
-## 📌 Descripción
-
-**Gestor de Contactos** es una aplicación móvil nativa para Android desarrollada en **Java** con **Android Studio**. Permite administrar una agenda de contactos personales con persistencia local mediante **SQLite**, incluyendo autenticación de usuario, búsqueda en tiempo real y operaciones CRUD completas.
-
----
-
 ## ✨ Funcionalidades
 
-### 🔐 Autenticación
-- Login con validación de credenciales (`admin` / `1234`)
-- Persistencia de sesión con **SharedPreferences**
-- Inicio automático si la sesión ya está activa
-- Opción de cerrar sesión desde el menú
+- 🔐 **Login con validación** — acceso con credenciales de usuario
+- 💾 **Sesión persistente** — inicio automático si la sesión ya está activa
+- 🚪 **Cerrar sesión** — desde el menú de la app
+- 📋 **Listado de contactos** — lista dinámica con RecyclerView
+- 🔍 **Búsqueda en tiempo real** — filtrado mientras escribís
+- ✏️ **CRUD completo** — agregar, editar y eliminar contactos
+- 📥 **Contactos predeterminados** — se cargan al iniciar la app
+- ✅ **Validaciones** — campos vacíos y teléfono solo numérico
 
-### 📋 Gestión de Contactos
-- Listado de contactos con **RecyclerView**
-- Búsqueda en tiempo real
-- Agregar, editar y eliminar contactos
-- Carga de contactos predeterminados al iniciar la app
+## 🧾 Datos por contacto
 
-### 🧾 Datos por contacto
 | Campo | Tipo |
 |---|---|
 | Nombre | Texto |
@@ -47,61 +38,46 @@
 | Domicilio | Texto |
 | Género | Selección |
 
-### ✅ Validaciones
-- Verificación de campos vacíos
-- El campo teléfono acepta únicamente valores numéricos
+## 🛠️ Stack técnico
 
----
-
-## 🗄️ Base de datos
-
-La app utiliza **SQLite** para almacenamiento local en el dispositivo. Se implementaron todas las operaciones CRUD a través de la clase `ContactoDbHelper`:
-
-| Operación | Descripción |
+| | |
 |---|---|
-| **Create** | Insertar nuevo contacto |
-| **Read** | Leer y listar contactos |
-| **Update** | Actualizar datos de un contacto |
-| **Delete** | Eliminar contacto individual |
+| **Lenguaje** | Java · XML (layouts) |
+| **Base de datos** | SQLite (`SQLiteOpenHelper`) |
+| **Interfaz** | RecyclerView · Material Components · degradés y botones personalizados |
+| **Sesión** | SharedPreferences |
+| **IDE** | Android Studio · Gradle |
 
----
+## 📸 Capturas de pantalla
 
-## 🎨 Diseño de interfaz
+### 🔑 Login
 
-- Fondos con degradé personalizados
-- Botones redondeados y estilizados
-- Diseño responsive definido en XML
-- Componentes **Material Design** (`FloatingActionButton`, `Toolbar`, etc.)
+<!-- Agregá acá la captura -->
 
----
+### 📋 Lista de contactos
 
-## 🛠️ Tecnologías utilizadas
+<!-- Agregá acá la captura -->
 
-| Tecnología | Uso |
-|---|---|
-| **Java** | Lenguaje principal |
-| **Android Studio** | IDE de desarrollo |
-| **SQLite** | Base de datos local |
-| **XML** | Diseño de layouts |
-| **RecyclerView** | Lista dinámica de contactos |
-| **SharedPreferences** | Persistencia de sesión |
-| **Material Components** | Componentes visuales modernos |
+### ➕ Nuevo contacto
 
----
+<!-- Agregá acá la captura -->
+
+### ✏️ Edición de contacto
+
+<!-- Agregá acá la captura -->
 
 ## 📂 Estructura del proyecto
 
 ```
 com.example.marchetti399/
-│
-├── 📄 LoginActivity.java           # Pantalla de inicio de sesión
-├── 📄 ContactosActivity.java       # Lista principal de contactos
-├── 📄 NuevoContactoActivity.java   # Formulario agregar / editar
-├── 📄 Contacto.java                # Modelo de datos
-├── 📄 ContactoDbHelper.java        # Gestor de base de datos SQLite
-├── 📄 ContactosAdapter.java        # Adaptador del RecyclerView
-├── 📄 OnContactoClick.java         # Interfaz click simple
-├── 📄 OnContactoLongClick.java     # Interfaz click largo
+├── LoginActivity.java           → Pantalla de inicio de sesión
+├── ContactosActivity.java       → Lista principal de contactos
+├── NuevoContactoActivity.java   → Formulario agregar / editar
+├── Contacto.java                → Modelo de datos
+├── ContactoDbHelper.java        → Gestor de base de datos SQLite
+├── ContactosAdapter.java        → Adaptador del RecyclerView
+├── OnContactoClick.java         → Interfaz de click simple
+├── OnContactoLongClick.java     → Interfaz de click largo
 │
 ├── res/layout/
 │   ├── activity_login.xml
@@ -114,11 +90,9 @@ com.example.marchetti399/
     └── boton_transparente.xml
 ```
 
----
-
 ## ⚙️ Funcionamiento técnico
 
-### 🔹 SharedPreferences — Persistencia de sesión
+### Persistencia de sesión
 
 ```java
 getSharedPreferences("MisPreferencias", MODE_PRIVATE)
@@ -127,90 +101,62 @@ getSharedPreferences("MisPreferencias", MODE_PRIVATE)
     .apply();
 ```
 
-Al iniciar la app se verifica si `isLoggedIn` es `true`. De ser así, se omite la pantalla de login y se navega directamente a la lista de contactos.
+Al iniciar la app se verifica `isLoggedIn`. Si es `true`, se omite el login y se navega directo a la lista de contactos.
 
----
-
-### 🔹 SQLiteOpenHelper — Base de datos local
+### Base de datos local
 
 ```java
 public class ContactoDbHelper extends SQLiteOpenHelper { ... }
 ```
 
-Esta clase gestiona el ciclo de vida de la base de datos y expone métodos para:
-- Crear la tabla de contactos
-- Insertar, actualizar y eliminar registros
-- Consultar y retornar la lista de contactos
+`ContactoDbHelper` gestiona el ciclo de vida de la base y expone las operaciones:
 
----
+| Operación | Descripción |
+|---|---|
+| **Create** | Insertar un nuevo contacto |
+| **Read** | Leer y listar contactos |
+| **Update** | Actualizar los datos de un contacto |
+| **Delete** | Eliminar un contacto |
 
-### 🔹 RecyclerView + Adapter — Lista dinámica
+### Lista dinámica
 
 ```java
 recyclerView.setAdapter(new ContactosAdapter(contactos, clickListener, longClickListener));
 ```
 
-Los contactos se obtienen desde SQLite y se renderizan dinámicamente. El adaptador notifica cambios en tiempo real al agregar, editar o eliminar un contacto.
+Los contactos se leen desde SQLite y se renderizan dinámicamente. El adaptador notifica los cambios al agregar, editar o eliminar.
 
----
+## 🚀 Instalación
 
-## 📸 Capturas de pantalla
+### Requisitos
 
-### 🔑 Pantalla de Login
+- [Android Studio](https://developer.android.com/studio)
+- Emulador o dispositivo físico con **Android 7.0+**
 
+### Pasos
 
-### 📋 Lista de Contactos
-
-
-### ➕ Formulario Nuevo Contacto
-
-
-### ✏️ Edición de Contacto
-
-
----
-
-## ▶️ Cómo ejecutar el proyecto
-
-1. Clonar el repositorio:
 ```bash
 git clone https://github.com/smarchettiariza/gestor-contactos-android.git
 ```
 
-2. Abrir el proyecto en **Android Studio**
+1. Abrí el proyecto en **Android Studio**.
+2. Sincronizá las dependencias con **Gradle**.
+3. Ejecutalo en un emulador o dispositivo físico.
+4. Ingresá con las credenciales de prueba:
 
-3. Sincronizar dependencias con **Gradle**
+```
+usuario:    admin
+contraseña: 1234
+```
 
-4. Ejecutar en un emulador o dispositivo físico con **Android 7.0+**
+## 📌 Notas
 
-5. Iniciar sesión con las credenciales:
-   - **Usuario:** `admin`
-   - **Contraseña:** `1234`
-
----
-
-## 👨‍💻 Autor
-
-<div align="center">
-
-**Santiago Marchetti Ariza**
-
-Estudiante de Desarrollo de Aplicaciones Informáticas
-
-*Apasionado por el desarrollo web y móvil 🚀*
-
-[![GitHub](https://img.shields.io/badge/GitHub-smarchettiariza-181717?style=for-the-badge&logo=github)](https://github.com/smarchettiariza)
-
-</div>
-
----
-
-## 📄 Licencia
-
-Este proyecto es de carácter **educativo y personal**. Libre para usar como referencia o inspiración.
-
----
+- Los datos se guardan **localmente** en el dispositivo (SQLite): no hay servidor ni datos compartidos entre instalaciones.
+- Las credenciales `admin` / `1234` son de prueba y están definidas en la app.
+- Proyecto de carácter **educativo y personal**, libre para usar como referencia o inspiración.
 
 <div align="center">
-  <sub>Desarrollado con ❤️ por Santiago Marchetti Ariza</sub>
+
+Proyecto Academico.
+
 </div>
